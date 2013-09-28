@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="slide-down-menu">
+  <name>Slide Down Menu</name>
+  <publisher>Blounty</publisher>
+  <publisher-url>https://github.com/blounty/SlideDownMenu</publisher-url>
+  <version>1.1</version>
+  <summary>Easily add beautiful drop down menus to your iOS apps.</summary>
+  <samples>
+    <sample id="SlideDownMenu">
+      <name>iOS Sample.</name>
+      <summary>Demonstrates a basic implementation of the slide down menu.</summary>
+    </sample>
+  </samples>
+</component>

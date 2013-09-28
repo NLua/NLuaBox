@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="NLua">
+  <name>NLua</name>
+  <publisher>Vinicius Jarina</publisher>
+  <publisher-url>http://nlua.org</publisher-url>
+  <src-url>http://github.com/nlua/nlua</src-url>
+  <version>1.0</version>
+  <summary>Lua scripting for .NET</summary>
+  <samples>
+    <sample id="NLuaSample">
+      <name>iOS Sample.</name>
+      <summary>NLua iOS Sample</summary>
+    </sample>
+  </samples>
+</component>
