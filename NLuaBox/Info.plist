@@ -20,9 +20,7 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>7.0</string>
@@ -30,15 +28,32 @@
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icons/AppIcon60x60@2x</string>
-		<string>Icons/AppIcon76x76</string>
+		<string>Resources/Default-568h@2x.png</string>
 		<string>Icons/AppIcon76x76@2x</string>
+		<string>Icons/AppIcon76x76</string>
+		<string>Icons/AppIcon60x60@2x</string>
 		<string>Icons/AppIcon29x29</string>
 		<string>Icons/AppIcon29x29@2x</string>
 		<string>Icons/AppIcon40x40</string>
 		<string>Icons/AppIcon40x40@2x</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
-	<true/>
+	<false/>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>NSMainNibFile</key>
+	<string></string>
+	<key>NSMainNibFile~ipad</key>
+	<string></string>
+	<key>UIStatusBarTintParameters</key>
+	<dict>
+		<key>UINavigationBar</key>
+		<dict>
+			<key>Style</key>
+			<string>UIBarStyleDefault</string>
+			<key>Translucent</key>
+			<false/>
+		</dict>
+	</dict>
 </dict>
 </plist>

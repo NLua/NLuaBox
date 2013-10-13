@@ -5,9 +5,13 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using Chormatism;
 using NLua;
+using System.Drawing;
+using NLuaBox.Binders;
+
 
 namespace NLuaBox
 {
+
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to
 	// application events from iOS.
@@ -16,8 +20,14 @@ namespace NLuaBox
 	{
 		// class-level declarations
 		UIWindow window;
-		UITextView codeView;
+		UIViewController viewController;
 		Lua context = new Lua ();
+		
+
+		public UIWindow Window { get { return window; } set { window = value; } }
+		public UIViewController ViewController { get { return viewController; } set { viewController = value; } }
+				
+
 
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this
@@ -28,35 +38,23 @@ namespace NLuaBox
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			// create a new window instance based on the screen size
-			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			string script = @"
--- this is a Lua script
-function myFunc (v1, v2)
-	return v1 + v2
-end
-
-print (myFunc(10,20))
-";
-			JLTextViewController viewController = new JLTextViewController (new NSString(script));
-
-			UINavigationController navigationContorler = new UINavigationController (viewController);
-			navigationContorler.NavigationBar.BarStyle = UIBarStyle.Black;
-
-			codeView = viewController.TextView;
-
-			viewController.TextView.KeyboardAppearance = UIKeyboardAppearance.Dark;
-			navigationContorler.SetNavigationBarHidden (true, false);
-
+			NLuaBoxBinder.RegisterNLuaBox(context);
 			InitNLua ();
 
-			SetupToolbarOnKeyboard (viewController.TextView);
+			try {
+				context.DoFile ("scripts/sandbox/main.lua");
 
-			window.RootViewController = navigationContorler;
-			window.MakeKeyAndVisible ();
-			
+				LuaFunction initFunction = context ["Init"] as LuaFunction;
+
+				var res = initFunction.Call (this).First ();	
+
+			} catch (Exception e) {
+				Console.Write (e);
+				return false;
+			}
 			return true;
 		}
+
 
 		void InitNLua()
 		{
@@ -65,20 +63,21 @@ print (myFunc(10,20))
 				// Import assemblies (remember link will remove unused types/methods).
 				// http://docs.xamarin.com/guides/ios/advanced_topics/linker
 
-			context.DoString (@"import ('System')
-								import ('System','System.Drawing')
-								import ('monotouch', 'MonoTouch.Foundation')
-								import ('monotouch', 'MonoTouch.UIKit') 
-								import ('NLuaBox') ");
-
-
+			context.DoString (@"	import ('System')
+						import ('System','System.Drawing')
+						import ('monotouch', 'MonoTouch.Foundation')
+						import ('monotouch', 'MonoTouch.UIKit') 
+						import ('NLuaBox') ");
 
 			var printOutputFunc = typeof(AppDelegate).GetMethod ("Print");
 			context.RegisterFunction ("print", this, printOutputFunc);
+
+			context.DoString ("package.path = package.path .. \";./scripts/sandbox/?.lua\"");
 		}
 
 		public void Print(string output, params object[] extra )
 		{
+			Console.WriteLine (output);
 		}
 
 		public void SetupToolbarOnKeyboard (UITextView txt)
@@ -105,16 +104,11 @@ print (myFunc(10,20))
 			txt.InputAccessoryView = toolbar;
 		}
 
+
+
 		void OnRun ()
 		{
-			string script = codeView.Text;
-			try {
 
-				context.DoString (script);
-
-			} catch (Exception e) {
-
-			}
 		}
 
 		protected override void Dispose (bool disposing)

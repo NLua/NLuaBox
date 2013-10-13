@@ -1,0 +1,27 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../NLuaBox/AppDelegate.cs">
+    <Files>
+      <File FileName="../../../../NLuaBox/AppDelegate.cs" Line="108" Column="16" />
+      <File FileName="SlideDownMenu.Sample/SlideDownMenuSampleViewController.cs" Line="1" Column="1" />
+      <File FileName="../../../../../../../../../Developer/MonoTouch/Source/monotouch/src/UIKit/UIApplication.cs" Line="1" Column="1" />
+      <File FileName="../../../../NLuaBox/Main.cs" Line="16" Column="1" />
+      <File FileName="../../../../NLuaBox/Info.plist" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="NLuaBox" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="ComponentReferenceFolder" expanded="True" />
+            <Node name="AppDelegate.cs" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

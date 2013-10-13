@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -23,10 +23,14 @@
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
+    <MtouchSdkVersion>7.0</MtouchSdkVersion>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -51,8 +55,18 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchLink>None</MtouchLink>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchSdkVersion>7.0</MtouchSdkVersion>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <IpaPackageName>
+    </IpaPackageName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -63,6 +77,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchLink>None</MtouchLink>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>full</DebugType>
@@ -96,36 +114,42 @@
     <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Blounty.SlideDownMenu, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\slide-down-menu-1.1\lib\ios\Blounty.SlideDownMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="KeraLua.iOS">
+      <HintPath>..\KeraLua.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua.iOS">
+      <HintPath>..\NLua.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="Blounty.SlideDownMenu">
-      <HintPath>..\Components\slide-down-menu-1.1\lib\ios\Blounty.SlideDownMenu.dll</HintPath>
-    </Reference>
     <Reference Include="Chormatism">
       <HintPath>..\Components\Chromatism-1.0\lib\ios\Chormatism.dll</HintPath>
     </Reference>
-    <Reference Include="KeraLua.iOS">
-      <HintPath>..\Components\NLua-1.0\lib\ios\KeraLua.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="NLuaiOS">
-      <HintPath>..\Components\NLua-1.0\lib\ios\NLuaiOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\Icons\" />
+    <BundleResource Include="Resources\Default-568h.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <BundleResource Include="Resources\scripts\sandbox\NLuaBoxAppDelegate.lua" />
+    <BundleResource Include="Resources\scripts\sandbox\NLuaBoxViewController.lua" />
+    <BundleResource Include="Resources\scripts\sandbox\main.lua" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Binders\NLuaBoxBinder.cs" />
+    <Compile Include="Binders\NLuaBoxUIViewControllerBinder.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="NLuaViewController.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <XamarinComponentReference Include="slide-down-menu">
       <Version>1.1</Version>
@@ -141,7 +165,8 @@
     <BundleResource Include="Resources\Icons\AppIcon60x60%402x.png" />
     <BundleResource Include="Resources\Icons\AppIcon76x76.png" />
     <BundleResource Include="Resources\Icons\AppIcon76x76%402x.png" />
-    <BundleResource Include="Resources\Icons\iTunesArtwork.png" />
-    <BundleResource Include="Resources\Icons\iTunesArtwork%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad.7.0" />
   <MonoDevelop.Ide.Workbench ActiveDocument="NLuaBox/AppDelegate.cs">
     <Files>
-      <File FileName="NLuaBox/AppDelegate.cs" Line="13" Column="51" />
+      <File FileName="NLuaBox/AppDelegate.cs" Line="50" Column="64" />
+      <File FileName="../../../../../Developer/MonoTouch/Source/mono/mcs/class/corlib/System.Collections.Generic/Dictionary.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
