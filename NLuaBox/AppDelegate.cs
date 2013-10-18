@@ -26,6 +26,7 @@ namespace NLuaBox
 
 		public UIWindow Window { get { return window; } set { window = value; } }
 		public UIViewController ViewController { get { return viewController; } set { viewController = value; } }
+		public Lua Context { get { return context; } }
 				
 
 

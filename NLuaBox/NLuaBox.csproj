@@ -114,22 +114,21 @@
     <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Blounty.SlideDownMenu, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Components\slide-down-menu-1.1\lib\ios\Blounty.SlideDownMenu.dll</HintPath>
-    </Reference>
-    <Reference Include="KeraLua.iOS">
-      <HintPath>..\KeraLua.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="NLua.iOS">
-      <HintPath>..\NLua.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="Chormatism">
       <HintPath>..\Components\Chromatism-1.0\lib\ios\Chormatism.dll</HintPath>
+    </Reference>
+    <Reference Include="Blounty.SlideDownMenu">
+      <HintPath>..\Components\slide-down-menu-1.1\lib\ios\Blounty.SlideDownMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="KeraLua.iOS">
+      <HintPath>..\Components\NLua-1.0\lib\ios\KeraLua.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua.iOS">
+      <HintPath>..\Components\NLua-1.0\lib\ios\NLua.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

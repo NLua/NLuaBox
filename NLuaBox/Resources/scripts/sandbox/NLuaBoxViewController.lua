@@ -2,9 +2,9 @@
 
 
 local NLuaBoxViewController = {}
---setmetatable (NLuaBoxViewController, {__call = function(self, ...)
---													return self.new (...)
---													end}) 
+setmetatable (NLuaBoxViewController, {__call = function(self, ...)
+													return self.new (...)
+													end}) 
 
 
 function NLuaBoxViewController.new (...)
@@ -46,6 +46,10 @@ function NLuaBoxViewController:ViewDidLoad ()
 	self.m.button.TouchUpInside:Add (function () 
 										self.m.numClicks = self.m.numClicks + 1;
 										self.m.button:SetTitle (String.Format ("clicked {0} times", self.m.numClicks), UIControlState.Normal);
+										local alert = UIAlertView ();
+										alert.Message = "Displaying UIAlertView From Lua";
+										alert:AddButton ('OK');
+										alert:Show ();
 									end);
 
 	self.m.button.AutoresizingMask = luanet.enum(UIViewAutoresizing,'FlexibleWidth,FlexibleTopMargin,FlexibleBottomMargin');

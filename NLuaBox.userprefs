@@ -1,10 +1,35 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="NLuaBox/AppDelegate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="NLuaBox/Resources/scripts/sandbox/NLuaBoxAppDelegate.lua">
     <Files>
-      <File FileName="NLuaBox/AppDelegate.cs" Line="50" Column="64" />
+      <File FileName="NLuaBox/AppDelegate.cs" Line="29" Column="49" />
       <File FileName="../../../../../Developer/MonoTouch/Source/mono/mcs/class/corlib/System.Collections.Generic/Dictionary.cs" Line="1" Column="1" />
+      <File FileName="NLuaBox/Resources/scripts/sandbox/NLuaBoxAppDelegate.lua" Line="30" Column="4" />
+      <File FileName="NLuaBox/Resources/scripts/sandbox/NLuaBoxViewController.lua" Line="7" Column="1" />
+      <File FileName="NLuaBox/Resources/scripts/sandbox/main.lua" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="NLuaBox" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="Resources" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="sandbox" expanded="True">
+                  <Node name="NLuaBoxAppDelegate.lua" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
