@@ -1,4 +1,11 @@
-Console.WriteLine ('Aqui 1')
+
+
+import ('System')
+import ('System','System.Drawing')
+import ('monotouch', 'MonoTouch.Foundation')
+import ('monotouch', 'MonoTouch.UIKit') 
+import ('Chormatism', 'Chormatism') 
+import ('NLuaBox') 
 
 NLuaBoxAppDelegate = require ('NLuaBoxAppDelegate')
 
