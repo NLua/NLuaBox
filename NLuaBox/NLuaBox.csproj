@@ -139,8 +139,8 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <BundleResource Include="Resources\scripts\sandbox\NLuaBoxAppDelegate.lua" />
-    <BundleResource Include="Resources\scripts\sandbox\NLuaBoxViewController.lua" />
     <BundleResource Include="Resources\scripts\sandbox\main.lua" />
+    <BundleResource Include="Resources\scripts\sandbox\ui.lua" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Binders\NLuaBoxBinder.cs" />

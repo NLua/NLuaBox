@@ -1,18 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina.7.0" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.eyePhone5" />
   <MonoDevelop.Ide.Workbench ActiveDocument="NLuaBox/AppDelegate.cs">
     <Files>
-      <File FileName="NLuaBox/Resources/scripts/sandbox/NLuaBoxAppDelegate.lua" Line="47" Column="16" />
-      <File FileName="NLuaBox/Resources/scripts/sandbox/NLuaBoxViewController.lua" Line="1" Column="1" />
+      <File FileName="NLuaBox/Resources/scripts/sandbox/NLuaBoxAppDelegate.lua" Line="1" Column="1" />
       <File FileName="NLuaBox/Resources/scripts/sandbox/main.lua" Line="1" Column="1" />
-      <File FileName="NLuaBox/AppDelegate.cs" Line="60" Column="1" />
-      <File FileName="NLuaBox/NLuaViewController.cs" Line="1" Column="1" />
+      <File FileName="NLuaBox/AppDelegate.cs" Line="50" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/viniciusjarina/projects/codefoco/NLuaBox/NLuaBox/AppDelegate.cs" line="50" column="51" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

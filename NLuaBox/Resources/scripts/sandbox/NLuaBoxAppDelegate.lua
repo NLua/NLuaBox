@@ -2,6 +2,8 @@
 
 local NLuaBoxAppDelegate = {}
 
+ui = require ('ui');
+
 NLuaBoxAppDelegate.mt = {__call = function(self, ...)
 													return self.new (...)
 											end
@@ -27,14 +29,7 @@ end
 
 --msgbox like func
 
-function msgbox(message)
-	local view = UIAlertView ();
-	view.Message = message;
-	view:AddButton ('OK');
-	view:Show ();
-end
-
-msgbox ("Hello");
+ui.MessageBox ("Hello");
 
 print (myFunc(10,20))
 ]];
@@ -53,6 +48,7 @@ print (myFunc(10,20))
 
 			self.Window.RootViewController = navigationContorler;
 			self.Window:MakeKeyAndVisible ();
+
 			
 			return true;
 end
@@ -77,6 +73,8 @@ function NLuaBoxAppDelegate:SetupToolbarOnKeyboard (txt)
 					self:OnRun ();
 				end);
 
+			goButton.TintColor = UIColor.Red;
+
 			local itens = 
 			toolbar:SetItems (luanet.make_array(UIBarButtonItem, {doneButton, goButton}), true);
 
@@ -85,10 +83,22 @@ end
 
 function NLuaBoxAppDelegate:OnRun ()
 
-	local context = self.AppDelegate.Context;
+	local function run()
+		local context = self.AppDelegate.Context;
 
-	context:DoString (self.m.codeView.Text);
-
+		context:DoString (self.m.codeView.Text);
+	end
+	err,msg = pcall (run)
+	if (not err) then
+		local error = "Error running... ";
+		if (msg ~= nil) then
+			error = error .. msg:ToString ();
+			if (msg.InnerException ~= nil) then
+				error = error .. " " .. msg.InnerException:ToString();
+			end
+		end
+		ui.MessageBox (error);
+	end
 end
 
 return NLuaBoxAppDelegate

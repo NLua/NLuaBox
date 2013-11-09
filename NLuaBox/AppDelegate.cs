@@ -7,6 +7,7 @@ using Chormatism;
 using NLua;
 using System.Drawing;
 using NLuaBox.Binders;
+using System.Threading.Tasks;
 
 
 
@@ -36,10 +37,28 @@ namespace NLuaBox
 		//
 		// You have 17 seconds to return from this method, or iOS will terminate your application.
 		//
+
+		public class Foo
+		{
+			public int x = 10;
+		}
+
+		Task<Foo> GetFoo ()
+		{
+			return Task.Factory.StartNew (() => {
+				Console.WriteLine ("Test");
+				var x =  new Foo ();
+				Console.WriteLine ("Foo");
+				return x;
+			});
+		}
+
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			NLuaBoxBinder.RegisterNLuaBox(context);
 			InitNLua ();
+
+			var x = GetFoo ().Result;
 			try {
 				context.DoFile ("scripts/sandbox/main.lua");
 
