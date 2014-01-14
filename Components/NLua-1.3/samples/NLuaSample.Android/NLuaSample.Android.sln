@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLuaSample.Android", "NLuaSample.Android\NLuaSample.Android.csproj", "{01D312C9-C858-4CE3-9C4E-4821C62FB80C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01D312C9-C858-4CE3-9C4E-4821C62FB80C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01D312C9-C858-4CE3-9C4E-4821C62FB80C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01D312C9-C858-4CE3-9C4E-4821C62FB80C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01D312C9-C858-4CE3-9C4E-4821C62FB80C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = NLuaSample.Android\NLuaSample.Android.csproj
+	EndGlobalSection
+EndGlobal
