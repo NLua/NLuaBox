@@ -23,10 +23,15 @@
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchDebug>true</MtouchDebug>
+    <MtouchDebug>True</MtouchDebug>
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
+    <MtouchSdkVersion>Default</MtouchSdkVersion>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchExtraArgs />
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchEnableGenericValueTypeSharing>False</MtouchEnableGenericValueTypeSharing>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -180,13 +185,7 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\scripts\" />
-    <Folder Include="Resources\source\" />
-    <Folder Include="Resources\utils\" />
-    <Folder Include="Binder\" />
-    <Folder Include="ViewControllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />

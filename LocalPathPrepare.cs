@@ -7,6 +7,12 @@ namespace NLuaBox
 {
 	public static class LocalPathPrepare
 	{
+        enum DirectoryType
+        {
+            Scripts,
+            Source,
+            Utils,
+        }
 		static readonly  string [] dirs = { "scripts", "source", "utils" };
 
 		public static string LocalPath {
@@ -19,6 +25,24 @@ namespace NLuaBox
 				return path;
 			}
 		}
+
+        public static string SourcePath {
+            get {
+                return Path.Combine(LocalPath, dirs[(int)DirectoryType.Source]);
+            }
+        }
+
+        public static string UtilsPath {
+            get {
+                return Path.Combine(LocalPath, dirs[(int)DirectoryType.Utils]);
+            }
+        }
+
+        public static string ScriptsPath {
+            get {
+                return Path.Combine(LocalPath, dirs[(int)DirectoryType.Scripts]);
+            }
+        }
 
 		static string GetBasePath ()
 		{

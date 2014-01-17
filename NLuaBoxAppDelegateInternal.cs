@@ -4,6 +4,7 @@ using System.Linq;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using NLua;
+using NLuaBox.Binders;
 
 namespace NLuaBox
 {
@@ -33,6 +34,9 @@ namespace NLuaBox
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+            NLuaBoxBinder.RegisterNLuaBox(context);
+            InitNLua();
+
 			AppDelegate = this;
 			// create a new window instance based on the screen size
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
@@ -70,7 +74,11 @@ namespace NLuaBox
 		{
 			context.LoadCLRPackage ();
 
-			context.DoString ("package.path = package.path .. \";./scripts/sandbox/?.lua\"");
+            string source = "\";" + LocalPathPrepare.ScriptsPath + "/?.lua\"";
+            string scripts = "\";" + LocalPathPrepare.SourcePath + "/?.lua\"";
+            string utils = "\";" + LocalPathPrepare.UtilsPath + "/?.lua\"";
+
+            context.DoString("package.path = package.path .. " + source + ".." + utils + ".." + scripts);
 		}
 	}
 }

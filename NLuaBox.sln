@@ -1,30 +1,38 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLuaBox", "NLuaBox.csproj", "{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|iPhoneSimulator = Debug|iPhoneSimulator
-		Release|iPhoneSimulator = Release|iPhoneSimulator
-		Debug|iPhone = Debug|iPhone
-		Release|iPhone = Release|iPhone
 		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		Ad-Hoc|iPhoneSimulator = Ad-Hoc|iPhoneSimulator
 		AppStore|iPhone = AppStore|iPhone
+		AppStore|iPhoneSimulator = AppStore|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhone.Build.0 = Debug|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhone.ActiveCfg = Release|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhone.Build.0 = Release|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = NLuaBox.csproj

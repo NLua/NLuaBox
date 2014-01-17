@@ -34,8 +34,8 @@ namespace NLuaBox
 
 			string basePath = LocalPathPrepare.LocalPath;
 
-			string scritpPath = Path.Combine (basePath, "scripts");
-			string sourcePath = Path.Combine (basePath, "source");
+            string scritpPath = LocalPathPrepare.ScriptsPath;
+            string sourcePath = LocalPathPrepare.SourcePath;
 
 			store = new ScriptsStore(scritpPath, sourcePath);
 		}
@@ -141,10 +141,14 @@ namespace NLuaBox
 				scripts.Add (name);
 			}
 
+            scripts.Sort();
+
 			foreach (string script in store.Sources) {
 				string name = Path.GetFileName (script);
 				sources.Add (name);
 			}
+
+            sources.Sort();
 		}
 
 		public bool Exists (string file)
@@ -170,15 +174,19 @@ namespace NLuaBox
 
 			if (removeIndex != -1)
 				scripts.RemoveAt (removeIndex);
-			controller.ScriptViewController.LoadScript (newName, false);
+            if (controller.ScriptViewController != null)
+			    controller.ScriptViewController.LoadScript (newName, false);
 		}
 
 		public void AddFile (string file)
 		{
 			if (!Exists (file))
 				scripts.Add (file);
+
 			store.SaveScriptContent (file, "");
-			controller.ScriptViewController.LoadScript (file, false);
+
+            if (controller.ScriptViewController != null)
+			    controller.ScriptViewController.LoadScript (file, false);
 		}
 
 		public void RemoveFile (int row)

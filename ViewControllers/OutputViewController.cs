@@ -9,7 +9,7 @@ namespace NLuaBox
 {
 	public class OutputViewController : UIViewController
 	{
-		UITextView backView;
+		public UITextView backView;
 		string scriptCode;
 		NSTimer timer;
 
@@ -64,6 +64,8 @@ namespace NLuaBox
 			var printOutputFunc = typeof(OutputViewController).GetMethod ("OutputString");
 			context.RegisterFunction ("print", this, printOutputFunc);
 			context.RegisterFunction ("io.write", this, printOutputFunc);
+
+            context ["self"] = this;
 
 			try {
 				context.DoString (scriptCode);
