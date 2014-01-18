@@ -8,11 +8,11 @@ using System.Threading;
 
 namespace NLuaBox
 {
-	public class ScriptListViewController : UITableViewController
+	public class ScriptListViewControllerInternal : UITableViewController
 	{
 		ScriptsDataSource dataSource;
 
-		public ScriptListViewController ()
+		public ScriptListViewControllerInternal ()
 			: base ()
 		{
 			dataSource = new ScriptsDataSource (this);
@@ -33,13 +33,23 @@ namespace NLuaBox
 			}
 		}
 
-		public ScriptViewController ScriptViewController {
+		public ScriptViewControllerInternal ScriptViewController {
 			get;
 			set;
 		}
 
+        string FixupName(string file)
+        {
+            if (file.EndsWith(".lua"))
+                return file;
+            return file + ".lua";
+        }
+
+
 		void AddNewFile (string file, Action onSuccess)
 		{
+            file = FixupName(file);
+
 			Action actionAddFile = () => {
 				bool exists = dataSource.Exists (file);
 				dataSource.AddFile (file);
@@ -98,6 +108,8 @@ namespace NLuaBox
 				onSuccess ();
 			};
 
+            newName = FixupName (newName);
+
 			string oldName = dataSource.GetScriptName (indexPath);
 
 			if (oldName == newName) {
@@ -112,7 +124,7 @@ namespace NLuaBox
 		{
 			string fileName = dataSource.GetScriptName (indexPath);
 
-			var editFile = new EditScriptViewController ((name, action) => {
+			var editFile = new EditScriptViewControllerInternal ((name, action) => {
 				RenameFile (indexPath, name, action);
 			}, fileName);
 
@@ -124,7 +136,7 @@ namespace NLuaBox
 
 		void AddNewItem (object sender, EventArgs args)
 		{
-			var editFile = new EditScriptViewController ((name, action) => {
+			var editFile = new EditScriptViewControllerInternal ((name, action) => {
 				AddNewFile (name, action);
 			});
 			var nav = new UINavigationController (editFile);

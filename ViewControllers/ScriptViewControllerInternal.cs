@@ -8,7 +8,7 @@ using Chormatism;
 
 namespace NLuaBox
 {
-	public class ScriptViewController : JLTextViewController
+	public class ScriptViewControllerInternal : JLTextViewController
 	{
 		UIPopoverController masterPopoverController;
 		string scriptName;
@@ -17,7 +17,7 @@ namespace NLuaBox
 		ScriptsStore store;
 		NSTimer timer;
 
-		public ScriptViewController (ScriptsStore store)
+		public ScriptViewControllerInternal (ScriptsStore store)
 			: base ()
 		{
 			this.store = store;
@@ -108,7 +108,7 @@ namespace NLuaBox
 		{
 			string script = TextView.Text;
 
-			var output = new OutputViewController (script);
+			var output = new OutputViewControllerInternal (script);
 			ModalPresentationStyle =  UIModalPresentationStyle.CurrentContext;
 			var nav = new UINavigationController (output);
 			PresentViewController (nav, true, null);

@@ -23,6 +23,7 @@ Global
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhone.Build.0 = Debug|iPhone
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhone.Deploy.0 = Debug|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator

@@ -11,17 +11,14 @@ namespace NLuaBox
         {
             Scripts,
             Source,
-            Utils,
         }
-		static readonly  string [] dirs = { "scripts", "source", "utils" };
+
+		static readonly  string [] dirs = { "scripts", "source" };
 
 		public static string LocalPath {
 			get {
-
 				string path = GetBasePath ();
-
 				EnsureContentOnPath (path);
-
 				return path;
 			}
 		}
@@ -29,12 +26,6 @@ namespace NLuaBox
         public static string SourcePath {
             get {
                 return Path.Combine(LocalPath, dirs[(int)DirectoryType.Source]);
-            }
-        }
-
-        public static string UtilsPath {
-            get {
-                return Path.Combine(LocalPath, dirs[(int)DirectoryType.Utils]);
             }
         }
 
@@ -47,7 +38,6 @@ namespace NLuaBox
 		static string GetBasePath ()
 		{
 			string applicationDocumentsDirectory = NSSearchPath.GetDirectories (NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User, true).LastOrDefault ();
-
 			return Path.Combine (applicationDocumentsDirectory);
 		}
 

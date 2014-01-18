@@ -7,12 +7,12 @@ using MonoTouch.Dialog;
 
 namespace NLuaBox
 {
-	public class EditScriptViewController : DialogViewController
+	public class EditScriptViewControllerInternal : DialogViewController
 	{
 		Action<string, Action> doneAction;
 		EntryElement nameEntry;
 
-		public EditScriptViewController (Action<string, Action> onDone, string fileName = "") : base (UITableViewStyle.Grouped, null)
+		public EditScriptViewControllerInternal (Action<string, Action> onDone, string fileName = "") : base (UITableViewStyle.Grouped, null)
 		{
 			string title;
 			if (string.IsNullOrEmpty (fileName))

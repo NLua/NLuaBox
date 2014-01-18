@@ -7,13 +7,13 @@ using System.Text;
 
 namespace NLuaBox
 {
-	public class OutputViewController : UIViewController
+	public class OutputViewControllerInternal : UIViewController
 	{
 		public UITextView backView;
 		string scriptCode;
 		NSTimer timer;
 
-		public OutputViewController (string code)
+		public OutputViewControllerInternal (string code)
 			: base ()
 		{
 			scriptCode = code;
@@ -61,7 +61,7 @@ namespace NLuaBox
 		void EvalScript ()
 		{
 			var context = NLuaBoxAppDelegateInternal.AppDelegate.Context;
-			var printOutputFunc = typeof(OutputViewController).GetMethod ("OutputString");
+			var printOutputFunc = typeof(OutputViewControllerInternal).GetMethod ("OutputString");
 			context.RegisterFunction ("print", this, printOutputFunc);
 			context.RegisterFunction ("io.write", this, printOutputFunc);
 

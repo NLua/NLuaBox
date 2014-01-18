@@ -7,7 +7,7 @@
  
  namespace NLuaBox
  {
- 	class NLuaBoxUIViewControllerBinder : UIViewController, ILuaGeneratedType
+	class NLuaBoxUIViewControllerBinder : UIViewController, ILuaGeneratedType
  	{
  		public LuaTable __luaInterface_luaTable;
  		public Type [] [] __luaInterface_returnTypes;

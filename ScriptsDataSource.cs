@@ -16,7 +16,7 @@ namespace NLuaBox
 
 		ScriptsStore store;
 
-		readonly ScriptListViewController controller;
+		readonly ScriptListViewControllerInternal controller;
 
 		bool IsSourceCode (NSIndexPath index)
 		{
@@ -28,7 +28,7 @@ namespace NLuaBox
 			return section == 1;
 		}
 
-		public ScriptsDataSource (ScriptListViewController controller)
+		public ScriptsDataSource (ScriptListViewControllerInternal controller)
 		{
 			this.controller = controller;
 
@@ -118,7 +118,7 @@ namespace NLuaBox
 
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				if (controller.ScriptViewController == null)
-					controller.ScriptViewController = new ScriptViewController (ScriptsStore);
+					controller.ScriptViewController = new ScriptViewControllerInternal (ScriptsStore);
 
 				controller.ScriptViewController.LoadScript (name, isSource);
 

@@ -43,13 +43,13 @@ namespace NLuaBox
 			window.TintColor = UIColor.Purple;
 			// load the appropriate UI, depending on whether the app is running on an iPhone or iPad
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-				var controller = new ScriptListViewController ();
+				var controller = new ScriptListViewControllerInternal ();
 				navigationController = new UINavigationController (controller);
 				window.RootViewController = navigationController;
 			} else {
-				var masterViewController = new ScriptListViewController ();
+				var masterViewController = new ScriptListViewControllerInternal ();
 				var masterNavigationController = new UINavigationController (masterViewController);
-				var detailViewController = new ScriptViewController (masterViewController.ScriptsStore);
+				var detailViewController = new ScriptViewControllerInternal (masterViewController.ScriptsStore);
 				var detailNavigationController = new UINavigationController (detailViewController);
 
 				masterViewController.ScriptViewController = detailViewController;
@@ -76,9 +76,8 @@ namespace NLuaBox
 
             string source = "\";" + LocalPathPrepare.ScriptsPath + "/?.lua\"";
             string scripts = "\";" + LocalPathPrepare.SourcePath + "/?.lua\"";
-            string utils = "\";" + LocalPathPrepare.UtilsPath + "/?.lua\"";
-
-            context.DoString("package.path = package.path .. " + source + ".." + utils + ".." + scripts);
+            
+            context.DoString("package.path = package.path .. " + source +  ".." + scripts);
 		}
 	}
 }
