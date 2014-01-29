@@ -7,7 +7,7 @@ using MonoTouch.UIKit;
 
 namespace NLuaBox
 {
-	class NLuaBoxUITableViewControllerBinder : UIViewController, ILuaGeneratedType
+	class NLuaBoxUITableViewControllerBinder : UITableViewController, ILuaGeneratedType
 	{
 		public LuaTable __luaInterface_luaTable;
 		public Type [] [] __luaInterface_returnTypes;

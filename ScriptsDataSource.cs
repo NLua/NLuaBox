@@ -73,7 +73,7 @@ namespace NLuaBox
 			var cell = tableView.DequeueReusableCell (CellIdentifier);
 			if (cell == null)
 				cell = new UITableViewCell (UITableViewCellStyle.Default, CellIdentifier);
-
+			
 			if (IsSourceCode (indexPath)) {
 				cell.TextLabel.Text = sources [indexPath.Row].ToString ();
 				cell.Accessory = UITableViewCellAccessory.None;

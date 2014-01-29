@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Chormatism;
+using MonoTouch.Dialog;
 
 namespace NLuaBox.Binders
 {
@@ -38,6 +40,17 @@ namespace NLuaBox.Binders
 			context.RegisterLuaDelegateType (typeof (EventHandler<UIButtonEventArgs>), typeof (LuaButtonEventArgsHandler));
 
 			context.RegisterLuaClassType (typeof (UIViewController), typeof (NLuaBoxUIViewControllerBinder));
+			context.RegisterLuaClassType (typeof (UITableViewSource), typeof (NLuaBoxUITableViewSourceBinder));
+			context.RegisterLuaClassType (typeof (JLTextViewController), typeof (NLuaBoxDetailLuaViewController));
+			context.RegisterLuaClassType (typeof (DialogViewController), typeof (NLuaBoxDialogViewControllerBinder));
+			context.RegisterLuaClassType (typeof (UITableViewController), typeof (NLuaBoxUITableViewControllerBinder));
+
+			context.RegisterFunction ("CreateListString", typeof (NLuaBoxBinder).GetMethod ("CreateListString"));
+		}
+
+		static public List<string> CreateListString()
+		{
+			return new List<string> ();
 		}
 	}
 }

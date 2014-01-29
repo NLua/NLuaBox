@@ -159,13 +159,20 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\source\ui.lua" />
+    <BundleResource Include="Resources\source\ScriptViewController.lua" />
+    <BundleResource Include="Resources\source\ScriptListViewController.lua" />
+    <BundleResource Include="Resources\source\OutputViewController.lua" />
+    <BundleResource Include="Resources\source\EditScriptViewController.lua" />
+    <BundleResource Include="Resources\source\string_extra.lua" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <BundleResource Include="Resources\source\ScriptsDataSource.lua" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <BundleResource Include="Resources\source\ScriptStore.lua" />
     <Compile Include="ScriptsStore.cs" />
     <Compile Include="ScriptsDataSource.cs" />
     <Compile Include="LocalPathPrepare.cs" />
@@ -179,6 +186,7 @@
     <Compile Include="ViewControllers\ScriptListViewControllerInternal.cs" />
     <Compile Include="ViewControllers\OutputViewControllerInternal.cs" />
     <Compile Include="ViewControllers\EditScriptViewControllerInternal.cs" />
+    <Compile Include="Binder\NLuaBoxUITableViewSourceBinder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

@@ -5,6 +5,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using NLua;
 using NLuaBox.Binders;
+using System.IO;
 
 namespace NLuaBox
 {
@@ -34,50 +35,40 @@ namespace NLuaBox
 		//
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-            NLuaBoxBinder.RegisterNLuaBox(context);
-            InitNLua();
+			NLuaBoxBinder.RegisterNLuaBox (context);
+			InitNLua ();
 
-			AppDelegate = this;
-			// create a new window instance based on the screen size
-			window = new UIWindow (UIScreen.MainScreen.Bounds);
-			window.TintColor = UIColor.Purple;
-			// load the appropriate UI, depending on whether the app is running on an iPhone or iPad
-			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
-				var controller = new ScriptListViewControllerInternal ();
-				navigationController = new UINavigationController (controller);
-				window.RootViewController = navigationController;
-			} else {
-				var masterViewController = new ScriptListViewControllerInternal ();
-				var masterNavigationController = new UINavigationController (masterViewController);
-				var detailViewController = new ScriptViewControllerInternal (masterViewController.ScriptsStore);
-				var detailNavigationController = new UINavigationController (detailViewController);
+			bool res = true;
 
-				masterViewController.ScriptViewController = detailViewController;
-				
-				splitViewController = new UISplitViewController ();
-				splitViewController.WeakDelegate = detailViewController;
-				splitViewController.ViewControllers = new UIViewController[] {
-					masterNavigationController,
-					detailNavigationController
-				};
-				
-				window.RootViewController = splitViewController;
+			try {
+                string mainFile = Path.Combine(LocalPathPrepare.SourcePath, "main.lua");
+
+                context.DoFile(mainFile);
+
+				LuaFunction initFunction = context ["Init"] as LuaFunction;
+
+				res = (bool)initFunction.Call (this).First ();
+
+			} catch (Exception e) {
+				Console.WriteLine (e.ToString ());
+				ReportErrorAndRecoverSourceDir (e);
+				return false;
 			}
-
-			// make the window visible
-			window.MakeKeyAndVisible ();
-			
-			return true;
+			return res;
 		}
 
 		void InitNLua()
 		{
 			context.LoadCLRPackage ();
 
-            string source = "\";" + LocalPathPrepare.ScriptsPath + "/?.lua\"";
-            string scripts = "\";" + LocalPathPrepare.SourcePath + "/?.lua\"";
-            
-            context.DoString("package.path = package.path .. " + source +  ".." + scripts);
+			string source = "\";" + LocalPathPrepare.ScriptsPath + "/?.lua\"";
+			string scripts = "\";" + LocalPathPrepare.SourcePath + "/?.lua\"";
+
+			context.DoString ("package.path = package.path .. " + source + ".." + scripts);
+		}
+
+		void ReportErrorAndRecoverSourceDir (Exception e)
+		{
 		}
 	}
 }
