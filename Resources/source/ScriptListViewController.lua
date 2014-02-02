@@ -17,12 +17,14 @@ setmetatable (ScriptListViewController,ScriptListViewController.mt)
 function ScriptListViewController.new (...)
 
 		ScriptListViewController.m = {}; -- create a table members to store Lua fields
-		ScriptListViewController.m.dataSource = ScriptsDataSource (self);
+		Console.WriteLine ("Construindo ScriptsDataSource");
+		ScriptListViewController.m.dataSource = nil;
 		ScriptListViewController.m.ScriptViewController = nil;
 
 		luanet.make_object (ScriptListViewController, 'MonoTouch.UIKit.UITableViewController');
 
-		ScriptListViewController.TableView.Source = ScriptsDataSource.m.dataSource;
+		ScriptListViewController.m.dataSource = ScriptsDataSource (ScriptListViewController);
+		ScriptListViewController.TableView.Source = ScriptListViewController.m.dataSource;
 
 		ScriptListViewController.Title = NSBundle.MainBundle:LocalizedString ("Scripts", "Scripts");
 
@@ -30,8 +32,12 @@ function ScriptListViewController.new (...)
 			ScriptListViewController.PreferredContentSize = SizeF (320, 600);
 			ScriptListViewController.ClearsSelectionOnViewWillAppear = false;
 		end
-		Console.WriteLine (' {0} Dasdas ', ScriptListViewController.m.dataSource.m.store == nil);
+		Console.WriteLine ('ScriptListViewController.m.store is null {0} ', ScriptListViewController.m.dataSource.m.store == nil);
 		return ScriptListViewController;
+end
+
+function ScriptListViewController:GetScriptsStore ()
+		return self.m.dataSource:GetScriptsStore();
 end
 
 function FixupName(file)
@@ -126,7 +132,7 @@ function  ScriptListViewController:OnAccessoryButtonTapped (tableView, indexPath
 		
 			local fileName = self.m.dataSource:GetScriptName (indexPath);
 
-			local editFile = EditScriptViewControllerInternal ( function (name, action) 
+			local editFile = EditScriptViewController ( function (name, action) 
 				self:RenameFile (indexPath, name, action);
 			end, fileName);
 
@@ -138,7 +144,7 @@ end
 
 function ScriptListViewController:AddNewItem (sender, args)
 
-			local editFile = new EditScriptViewControllerInternal (function (name, action) 
+			local editFile = new EditScriptViewController (function (name, action) 
 				self:AddNewFile (name, action);
 			end);
 			local nav = UINavigationController (editFile);
@@ -156,7 +162,7 @@ function ScriptListViewController:ViewDidLoad ()
 
 			local addButton = UIBarButtonItem (UIBarButtonSystemItem.Compose, AddNewItem);
 			self.NavigationItem.RightBarButtonItem = addButton;
-
+			Console.WriteLine ("ViewDidLoad: store is null: {0}", self.m.dataSource:GetScriptsStore () == nil);
 			self.m.dataSource:Reload ();
 end
 

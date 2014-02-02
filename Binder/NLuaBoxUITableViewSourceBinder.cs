@@ -83,11 +83,13 @@ namespace NLuaBox
 			object [] args = new object [] {
 				__luaInterface_luaTable ,
 				tableView,
+				section,
 			};
 
 			object [] inArgs = new object [] {
 				__luaInterface_luaTable,
 				tableView,
+				section,
 			};
 
 			int [] outArgs = new int [] { };
@@ -178,6 +180,46 @@ namespace NLuaBox
 			int [] outArgs = new int [] { };
 			Type [] returnTypes = new Type [1] { typeof (void) };
 			LuaFunction function = NLua.Method.LuaClassHelper.GetTableFunction (__luaInterface_luaTable, "CommitEditingStyle");
+			NLua.Method.LuaClassHelper.CallFunction (function, args, returnTypes, inArgs, outArgs);
+		}
+
+		public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
+		{
+			object [] args = new object [] {
+				__luaInterface_luaTable ,
+				tableView,
+				indexPath,
+			};
+
+			object [] inArgs = new object [] {
+				__luaInterface_luaTable,
+				tableView,
+				indexPath,
+			};
+
+			int [] outArgs = new int [] { };
+			Type [] returnTypes = new Type [1] { typeof (void) };
+			LuaFunction function = NLua.Method.LuaClassHelper.GetTableFunction (__luaInterface_luaTable, "RowSelected");
+			NLua.Method.LuaClassHelper.CallFunction (function, args, returnTypes, inArgs, outArgs);
+		}
+
+		public override void AccessoryButtonTapped (UITableView tableView, NSIndexPath indexPath)
+		{
+			object [] args = new object [] {
+				__luaInterface_luaTable ,
+				tableView,
+				indexPath,
+			};
+
+			object [] inArgs = new object [] {
+				__luaInterface_luaTable,
+				tableView,
+				indexPath,
+			};
+
+			int [] outArgs = new int [] { };
+			Type [] returnTypes = new Type [1] { typeof (void) };
+			LuaFunction function = NLua.Method.LuaClassHelper.GetTableFunction (__luaInterface_luaTable, "AccessoryButtonTapped");
 			NLua.Method.LuaClassHelper.CallFunction (function, args, returnTypes, inArgs, outArgs);
 		}
 	}

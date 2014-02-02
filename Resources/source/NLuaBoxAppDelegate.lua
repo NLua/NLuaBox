@@ -2,7 +2,6 @@
 
 local NLuaBoxAppDelegate = {}
 
-ui = require ('ui');
 ScriptListViewController = require ('ScriptListViewController');
 ScriptViewController = require ('ScriptViewController')
 
@@ -31,7 +30,7 @@ function NLuaBoxAppDelegate:FinishLaunching ()
 			else 
 				local masterViewController =  ScriptListViewController ();
 				local masterNavigationController = UINavigationController (masterViewController);
-				local detailViewController = ScriptViewController (masterViewController.m.ScriptsStore);
+				local detailViewController = ScriptViewController (masterViewController:GetScriptsStore());
 				local detailNavigationController = UINavigationController (detailViewController);
 
 				masterViewController.m.ScriptViewController = detailViewController;

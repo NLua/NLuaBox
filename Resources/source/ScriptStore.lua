@@ -27,10 +27,10 @@ function ScriptStore.new (basePath, source)
 	ScriptStore.m.path = basePath;
 	ScriptStore.m.sourcePath = source;
 	
-	return ScriptDataSource
+	return ScriptStore;
 end
 
-function ScriptStore:GetScript()
+function ScriptStore:GetScripts()
 	return Directory.GetFiles (self.m.path);
 end
 
@@ -55,11 +55,12 @@ function ScriptStore:Exists (name)
 end
 
 function ScriptStore:RemoveFile (name)
-			local filePath = Path.Combine (path, name);
+			local filePath = Path.Combine (self.m.path, name);
 			File.Delete (filePath);
 end
 
 function ScriptStore:RenameFile (oldName, newName)
+			local path = self.m.path;
 			local oldPath = Path.Combine (path, oldName);
 			local newPath = Path.Combine (path, newName);
 			if (File.Exists (newPath)) then
@@ -69,7 +70,7 @@ function ScriptStore:RenameFile (oldName, newName)
 end
 
 function ScriptStore:GetScriptContent (name)
-			local filePath = Path.Combine (path, name);
+			local filePath = Path.Combine (self.m.path, name);
 			return File.ReadAllText (filePath);
 end
 

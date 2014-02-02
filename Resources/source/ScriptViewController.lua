@@ -18,6 +18,12 @@ function ScriptViewController.new (store,...)
 		ScriptViewController.m.store = store;
 		ScriptViewController.m.timer = nil;
 
+		if (store == nil) then
+			error ("ScriptStore cannot be null");
+		else
+			Console.WriteLine ("Store is ok");
+		end
+
 		luanet.make_object (ScriptViewController, 'Chormatism.JLTextViewController');
 
 		return ScriptViewController;
@@ -112,16 +118,19 @@ function ScriptViewController:SaveFileContent ()
 	self.m.store:SaveScriptContent (self.m.ScriptName, self.TextView.Text);
 end
 
-function ScriptViewController:WillHideViewControllerZeugma (splitController, viewController, barButtonItem, popoverController)
-			barButtonItem.Title = NSBundle.MainBundle.LocalizedString ("Scripts", "Scripts");
+function ScriptViewController:WillHideViewController (splitController, viewController, barButtonItem, popoverController)
+			barButtonItem.Title = NSBundle.MainBundle:LocalizedString ("Scripts", "Scripts");
 			self.NavigationItem:SetLeftBarButtonItem (barButtonItem, true);
 			self.m.masterPopoverController = popoverController;
+			Console.WriteLine ("WillHideViewController");
 end
 
 function  ScriptViewController:WillShowViewController ( svc,  vc, button)
 			-- Called when the view is shown again in the split view, invalidating the button and popover controller.
 			self.NavigationItem:SetLeftBarButtonItem (nil, true);
 			self.m.masterPopoverController = null;
+			Console.WriteLine ("WillShowViewController");
+			
 end
 
 return ScriptViewController;

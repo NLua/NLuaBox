@@ -1,19 +1,33 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPad.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Binder/NLuaBoxUITableViewSourceBinder.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4_64.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Resources/source/ScriptsDataSource.lua">
     <Files>
-      <File FileName="Resources/source/NLuaBoxAppDelegate.lua" Line="15" Column="46" />
-      <File FileName="Resources/source/ScriptListViewController.lua" Line="6" Column="38" />
-      <File FileName="Resources/source/ScriptViewController.lua" Line="1" Column="1" />
-      <File FileName="Resources/source/ScriptsDataSource.lua" Line="1" Column="1" />
-      <File FileName="NLuaBoxAppDelegateInternal.cs" Line="54" Column="1" />
-      <File FileName="Binder/NLuaBoxBinder.cs" Line="1" Column="1" />
-      <File FileName="Binder/NLuaBoxUITableViewSourceBinder.cs" Line="1" Column="1" />
-      <File FileName="ScriptsDataSource.cs" Line="1" Column="1" />
+      <File FileName="Resources/source/NLuaBoxAppDelegate.lua" Line="5" Column="1" />
+      <File FileName="Resources/source/ScriptListViewController.lua" Line="30" Column="11" />
+      <File FileName="Resources/source/ScriptViewController.lua" Line="132" Column="46" />
+      <File FileName="Resources/source/ScriptsDataSource.lua" Line="184" Column="32" />
+      <File FileName="NLuaBoxAppDelegateInternal.cs" Line="41" Column="20" />
+      <File FileName="Binder/NLuaBoxBinder.cs" Line="43" Column="59" />
+      <File FileName="Binder/NLuaBoxUITableViewSourceBinder.cs" Line="22" Column="1" />
+      <File FileName="ScriptsDataSource.cs" Line="12" Column="66" />
+      <File FileName="ViewControllers/ScriptListViewControllerInternal.cs" Line="32" Column="22" />
+      <File FileName="Resources/source/ScriptStore.lua" Line="28" Column="36" />
+      <File FileName="../../../../../Developer/MonoTouch/Source/monotouch/src/UIKit/UIApplication.cs" Line="38" Column="1" />
+      <File FileName="Resources/source/ui.lua" Line="1" Column="1" />
+      <File FileName="Resources/source/main.lua" Line="1" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>e.InnerException</Value>
+          <Value>e.InnerException</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
+      <Catchpoint exceptionName="System.NullReferenceException" includeSubclasses="True" />
       <Breakpoint file="/Users/viniciusjarina/projects/codefoco/NLuaBox/NLuaBoxAppDelegateInternal.cs" line="53" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
