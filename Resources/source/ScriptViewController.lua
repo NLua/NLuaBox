@@ -86,7 +86,9 @@ function ScriptViewController:ViewDidLoad ()
 		self.View.Frame = UIScreen.MainScreen.Bounds;
 		self.View.AutoresizingMask = luanet.enum(UIViewAutoresizing,'FlexibleWidth,FlexibleHeight');
 			
-		self.TextView.Changed:Add (self.OnChanged);
+		self.TextView.Changed:Add (function () 
+										self:ScheduleSave() 
+									end);
 		self:ConfigureView ();
 end
 
@@ -100,18 +102,17 @@ function ScriptViewController:OnRun (sender, args)
 	self:PresentViewController (nav, true, null);
 end
 
-function ScriptViewController:OnChanged (sender, e)
-		
-			if (self.m.timer ~= null) then
+function ScriptViewController:ScheduleSave ()
+			if (self.m.timer ~= nil) then
 				self.m.timer:Invalidate ();
 				self.m.timer:Dispose ();
 				self.m.timer = nil;
 			end
 
-			self.m.timer = NSTimer.CreateScheduledTimer (0.7, NSAction (function ()
+			self.m.timer = NSTimer.CreateScheduledTimer (0.7, function ()
 				self:SaveFileContent ();
 				end
-			));
+			);
 end
 
 function ScriptViewController:SaveFileContent ()

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Chormatism;
 using MonoTouch.Dialog;
+using MonoTouch.Foundation;
 
 namespace NLuaBox.Binders
 {
@@ -31,6 +32,17 @@ namespace NLuaBox.Binders
 		}
 	}
 
+	class LuaNSActionHandler : NLua.Method.LuaDelegate
+	{
+		void CallFunction ()
+		{
+			object [] args = new object [] { };
+			object [] inArgs = new object [] { };
+			int [] outArgs = new int [] { };
+			base.CallFunction (args, inArgs, outArgs);
+		}
+	}
+
 	class NLuaBoxBinder
 	{
 		static public void RegisterNLuaBox (Lua context)
@@ -38,6 +50,7 @@ namespace NLuaBox.Binders
 			context.RegisterLuaDelegateType (typeof (EventHandler<EventArgs>), typeof (LuaEventArgsHandler));
 			context.RegisterLuaDelegateType (typeof (EventHandler), typeof (LuaEventArgsHandler));
 			context.RegisterLuaDelegateType (typeof (EventHandler<UIButtonEventArgs>), typeof (LuaButtonEventArgsHandler));
+			context.RegisterLuaDelegateType (typeof(NSAction), typeof(LuaNSActionHandler));
 
 			context.RegisterLuaClassType (typeof (UIViewController), typeof (NLuaBoxUIViewControllerBinder));
 			context.RegisterLuaClassType (typeof (UITableViewSource), typeof (NLuaBoxUITableViewSourceBinder));

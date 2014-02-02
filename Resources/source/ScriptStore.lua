@@ -39,7 +39,7 @@ function ScriptStore:GetSources()
 end
 
 function ScriptStore:SaveSourceContent (name, content)
-			local filePath = Path.Combine (sourcePath, name);
+			local filePath = Path.Combine (self.m.sourcePath, name);
 			File.WriteAllText (filePath, content);
 end
 
@@ -75,7 +75,7 @@ function ScriptStore:GetScriptContent (name)
 end
 
 function ScriptStore:GetSourceContent (name)
-			local filePath = Path.Combine (sourcePath, name);
+			local filePath = Path.Combine (self.m.sourcePath, name);
 			return File.ReadAllText (filePath);
 end
 
