@@ -107,7 +107,7 @@ function ScriptsDataSource:CommitEditingStyle (tableView,  editingStyle,  indexP
 	if (editingStyle == UITableViewCellEditingStyle.Delete) then
 		-- Delete the row from the data source.
 		local controller = self.m.controller;
-		if (controller.m.ScriptViewController ~= nil and scripts[indexPath.Row] == controller.m.ScriptViewController.ScriptName) then
+		if (controller.m.ScriptViewController ~= nil and self.m.scripts[indexPath.Row] == controller.m.ScriptViewController.ScriptName) then
 			controller.m.ScriptViewController:LoadScript (null, false);
 		end
 		self:RemoveFile (indexPath.Row);

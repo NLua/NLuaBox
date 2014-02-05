@@ -1,6 +1,7 @@
 ﻿
 local ScriptViewController = {}
 
+OutputViewController = require ('OutputViewController');
 
 ScriptViewController.mt = { __call = function(self, store,...)
 													return self.new (store, ...)
@@ -45,7 +46,7 @@ end
 
 function ScriptViewController:EnablePlayButton ()
 
-			local playButton = UIBarButtonItem (UIBarButtonSystemItem.Play, self.OnRun);
+			local playButton = UIBarButtonItem (UIBarButtonSystemItem.Play, function () self:OnRun() end);
 			self.NavigationItem.RightBarButtonItem = playButton;
 end
 
@@ -92,11 +93,12 @@ function ScriptViewController:ViewDidLoad ()
 		self:ConfigureView ();
 end
 
-function ScriptViewController:OnRun (sender, args)
+function ScriptViewController:OnRun ()
 
 	local script = self.TextView.Text;
+	Console.WriteLine (" Script Content: {0}" , script);
 
-	local output = OutputViewController (script);
+	local output = OutputViewController.new (script);
 	self.ModalPresentationStyle =  UIModalPresentationStyle.CurrentContext;
 	local nav =  UINavigationController (output);
 	self:PresentViewController (nav, true, null);
@@ -108,15 +110,22 @@ function ScriptViewController:ScheduleSave ()
 				self.m.timer:Dispose ();
 				self.m.timer = nil;
 			end
-
 			self.m.timer = NSTimer.CreateScheduledTimer (0.7, function ()
+				Console.WriteLine ("Inside NSTimer ...");
+				
 				self:SaveFileContent ();
 				end
 			);
 end
 
 function ScriptViewController:SaveFileContent ()
-	self.m.store:SaveScriptContent (self.m.ScriptName, self.TextView.Text);
+	Console.WriteLine ("Save file Content {0}", self.m.ScriptName);
+
+	if (self.m.IsSource) then
+		self.m.store:SaveSourceContent (self.m.ScriptName, self.TextView.Text);
+	else
+		self.m.store:SaveScriptContent (self.m.ScriptName, self.TextView.Text);
+	end
 end
 
 function ScriptViewController:WillHideViewController (splitController, viewController, barButtonItem, popoverController)

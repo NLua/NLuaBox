@@ -41,9 +41,9 @@ namespace NLuaBox
 			bool res = true;
 
 			try {
-                string mainFile = Path.Combine(LocalPathPrepare.SourcePath, "main.lua");
+				string mainFile = Path.Combine(LocalPathPrepare.SourcePath, "main.lua");
 
-                context.DoFile(mainFile);
+				context.DoFile(mainFile);
 
 				LuaFunction initFunction = context ["Init"] as LuaFunction;
 

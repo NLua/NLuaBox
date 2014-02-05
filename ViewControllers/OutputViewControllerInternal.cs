@@ -65,7 +65,7 @@ namespace NLuaBox
 			context.RegisterFunction ("print", this, printOutputFunc);
 			context.RegisterFunction ("io.write", this, printOutputFunc);
 
-            context ["self"] = this;
+			context ["self"] = this;
 
 			try {
 				context.DoString (scriptCode);
