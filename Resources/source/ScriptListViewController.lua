@@ -4,6 +4,7 @@
 local ScriptListViewController = {}
 
 ScriptsDataSource = require ('ScriptsDataSource')
+EditScriptViewController = require ('EditScriptViewController')
 
 require ('string_extra')
 
@@ -40,31 +41,31 @@ function ScriptListViewController:GetScriptsStore ()
 		return self.m.dataSource:GetScriptsStore();
 end
 
-function FixupName(file)
-    if (file:ends(".lua")) then
-	return file;
-     end
-    return file  ".lua";
+function FixupName (file)
+	if (file:ends(".lua")) then
+		return file;
+	end
+	return file .. ".lua";
 end
 
 function ScriptListViewController:AddNewFile (file, onSuccess)
 
 	file = FixupName (file);
 
-		local actionAddFile = function ()
+	local actionAddFile = function ()
 
-			local exists = self.m.dataSource:Exists (file);
-			self.m.dataSource:AddFile (file);
+		local exists = self.m.dataSource:Exists (file);
+		self.m.dataSource:AddFile (file);
 
-			if (exists == false) then
-				local indexPath = NSIndexPath.FromRowSection (TableView:NumberOfRowsInSection (0), 0)
-				TableView.InsertRows (luanet.make_array(NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
-				indexPath:Dispose()
-			end
-			onSuccess ();
-		end;
+		if (exists == false) then
+			local indexPath = NSIndexPath.FromRowSection (self.TableView:NumberOfRowsInSection (0), 0);
+			self.TableView:InsertRows (luanet.make_array(NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
+			indexPath:Dispose();
+		end
+		onSuccess ();
+	end;
 
-		self:ValidateFileName (file, actionAddFile);
+	self:ValidateFileName (file, actionAddFile);
 end
 
 function ScriptListViewController:ValidateFileName (name, onValidName)
@@ -132,7 +133,7 @@ function  ScriptListViewController:OnAccessoryButtonTapped (tableView, indexPath
 		
 			local fileName = self.m.dataSource:GetScriptName (indexPath);
 
-			local editFile = EditScriptViewController ( function (name, action) 
+			local editFile = EditScriptViewController.new ( function (name, action) 
 				self:RenameFile (indexPath, name, action);
 			end, fileName);
 
@@ -142,9 +143,9 @@ function  ScriptListViewController:OnAccessoryButtonTapped (tableView, indexPath
 			self:PresentViewController (nav, true, null);
 end
 
-function ScriptListViewController:AddNewItem (sender, args)
+function ScriptListViewController:AddNewItem ()
 
-			local editFile = new EditScriptViewController (function (name, action) 
+			local editFile = EditScriptViewController.new (function (name, action) 
 				self:AddNewFile (name, action);
 			end);
 			local nav = UINavigationController (editFile);
@@ -160,7 +161,7 @@ function ScriptListViewController:ViewDidLoad ()
 			-- Perform any additional setup after loading the view, typically from a nib.
 			self.NavigationItem.LeftBarButtonItem = EditButtonItem;
 
-			local addButton = UIBarButtonItem (UIBarButtonSystemItem.Compose, AddNewItem);
+			local addButton = UIBarButtonItem (UIBarButtonSystemItem.Compose, function () self:AddNewItem() end);
 			self.NavigationItem.RightBarButtonItem = addButton;
 			Console.WriteLine ("ViewDidLoad: store is null: {0}", self.m.dataSource:GetScriptsStore () == nil);
 			self.m.dataSource:Reload ();
