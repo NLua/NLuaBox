@@ -38,14 +38,9 @@ function ScriptsDataSource.new (controller)
 	local scritpPath = LocalPathPrepare.ScriptsPath;
 	local sourcePath = LocalPathPrepare.SourcePath;
 
-	Console.WriteLine ("Construindo ScriptStore");
 	ScriptsDataSource.m.store = ScriptStore (scritpPath, sourcePath);
 
-	Console.WriteLine ("ScriptsDataSource ctor");
-
-
 	luanet.make_object (ScriptsDataSource, 'MonoTouch.UIKit.UITableViewSource');
-
 
 	return ScriptsDataSource;
 end
@@ -53,9 +48,6 @@ end
 
 
 function ScriptsDataSource:IsSourceCodeNumber(number)
-
-	Console.WriteLine ("ScriptsDataSource: IsSourceCodeNumber {0}", number);
-	
 	return number == 1;
 end
 
@@ -84,12 +76,9 @@ end
 
 function ScriptsDataSource:RowsInSection ( tableview, section)
 
-		Console.WriteLine ("ScriptsDataSource: RowsInSection {0}", section);
-
 		if (self:IsSourceCodeNumber (section))then
 			return self.m.sources.Count;
 		end
-		Console.WriteLine ("RowsInSection: Count {0}", self.m.scripts.Count);
 
 		return self.m.scripts.Count;
 end
@@ -136,8 +125,6 @@ end
 
 function ScriptsDataSource:RowSelected (tableView, indexPath)
 	
-	Console.WriteLine ("indexPath: {0} {1} {2} {3}", indexPath:ToString(), indexPath.Row, indexPath.Section, indexPath.Item);
-
 	local name = nil;
 	local isSource = self:IsSourceCode (indexPath);
 	local controller = self.m.controller;
@@ -148,8 +135,6 @@ function ScriptsDataSource:RowSelected (tableView, indexPath)
 		name = self.m.scripts[indexPath.Row];
 	end
 	
-	Console.WriteLine ("RowSelected: Selected {0} {1}", indexPath.Row, name);
-
 	if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) then
 		if (controller.m.ScriptViewController == nil) then
 			controller.m.ScriptViewController =  ScriptViewController (self:GetScriptsStore());
@@ -225,10 +210,8 @@ function ScriptsDataSource:RenameFile (indexPath, newName)
 end
 
 function ScriptsDataSource:AddFile (file)
-	Console.WriteLine (" Inside ScriptsDataSource:AddFile {0}" , file);
 	
 	if (not self:Exists (file)) then
-		Console.WriteLine ("Adding {0}", file);
 		self.m.scripts:Add (file);
 	end
 

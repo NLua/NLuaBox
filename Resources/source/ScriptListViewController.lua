@@ -63,20 +63,10 @@ function ScriptListViewController:AddNewFile (file, onSuccess)
 	Console.WriteLine (" Inside AddNewFile {0}" , file);
 
 	local actionAddFile = function ()
-		Console.WriteLine (" Inside actionAddFile {0}" , file);
-		
 		local exists = self.m.dataSource:Exists (file);
 		self.m.dataSource:AddFile (file);
 
 		if (exists == false) then
-			Console.WriteLine (" Calling using" );
-			--self.TableView:BeginUpdates ();
-			--using(NSIndexPath.FromRowSection (self.TableView:NumberOfRowsInSection (0), 0),
-			--function (indexPath)
-			--	self.TableView:InsertRows (luanet.make_array(NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
-			--end
-		--	)
-		--	self.TableView:EndUpdates ();
 			self.m.dataSource:Reload ();
 			self.TableView:ReloadData ();
 		end
@@ -162,7 +152,6 @@ end
 function ScriptListViewController:AddNewItem ()
 
 			local editFile = EditScriptViewController.new (function (name, action) 
-				Console.WriteLine (" Calling AddNewFile" );
 				self:AddNewFile (name, action);
 			end);
 			local nav = UINavigationController (editFile);

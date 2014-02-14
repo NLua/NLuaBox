@@ -64,7 +64,6 @@ end
 function ScriptStore:Exists (name)
 			
 			local filePath = Path.Combine (self.m.path, name);
-			Console.WriteLine (" Inside ScriptStore:Exists {0}", filePath);
 			return File.Exists (filePath);
 end
 

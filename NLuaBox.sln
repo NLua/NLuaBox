@@ -17,6 +17,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhone.Deploy.0 = Ad-Hoc|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.AppStore|iPhone.Build.0 = AppStore|iPhone
@@ -29,6 +30,7 @@ Global
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhone.ActiveCfg = Release|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhone.Build.0 = Release|iPhone
+		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhone.Deploy.0 = Release|iPhone
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{8C3F7CA2-834A-43D0-BE3D-102D1260EBEF}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
