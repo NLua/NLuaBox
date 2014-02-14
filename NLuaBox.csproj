@@ -139,16 +139,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\scripts\bisect.lua" />
     <BundleResource Include="Resources\scripts\cf.lua" />
-    <BundleResource Include="Resources\scripts\env.lua" />
     <BundleResource Include="Resources\scripts\factorial.lua" />
     <BundleResource Include="Resources\scripts\fib.lua" />
     <BundleResource Include="Resources\scripts\fibfor.lua" />
-    <BundleResource Include="Resources\scripts\life.lua" />
-    <BundleResource Include="Resources\scripts\printf.lua" />
-    <BundleResource Include="Resources\scripts\readonly.lua" />
     <BundleResource Include="Resources\scripts\sieve.lua" />
     <BundleResource Include="Resources\scripts\sort.lua" />
-    <BundleResource Include="Resources\scripts\trace-globals.lua" />
     <BundleResource Include="Resources\source\main.lua" />
     <BundleResource Include="Resources\source\NLuaBoxAppDelegate.lua" />
     <BundleResource Include="Resources\Default.png" />
@@ -180,8 +175,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <BundleResource Include="Resources\source\ScriptStore.lua" />
-    <Compile Include="ScriptsStore.cs" />
-    <Compile Include="ScriptsDataSource.cs" />
     <Compile Include="LocalPathPrepare.cs" />
     <Compile Include="NLuaBoxAppDelegateInternal.cs" />
     <Compile Include="Binder\NLuaBoxBinder.cs" />
@@ -189,10 +182,6 @@
     <Compile Include="Binder\NLuaBoxDialogViewControler.cs" />
     <Compile Include="Binder\NLuaBoxUITableViewControllerBinder.cs" />
     <Compile Include="Binder\NLuaBoxDetailLuaViewController.cs" />
-    <Compile Include="ViewControllers\ScriptViewControllerInternal.cs" />
-    <Compile Include="ViewControllers\ScriptListViewControllerInternal.cs" />
-    <Compile Include="ViewControllers\OutputViewControllerInternal.cs" />
-    <Compile Include="ViewControllers\EditScriptViewControllerInternal.cs" />
     <Compile Include="Binder\NLuaBoxUITableViewSourceBinder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />

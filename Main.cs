@@ -1,3 +1,13 @@
+//
+// Main.cs : iOS Main file
+//
+// Authors:
+//	Vinicius Jarina (vinicius.jarina@xamarin.com)
+//
+// Copyright 2013-2014 Xamarin Inc.
+// 
+// Licensed under MIT License
+//
 using System;
 using System.Collections.Generic;
 using System.Linq;

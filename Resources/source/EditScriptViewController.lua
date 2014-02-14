@@ -1,4 +1,12 @@
-﻿
+﻿--
+-- EditScriptViewController.lua : Dialog View controller, to edit the Script file name, dialog created using MonoTouch-Dialog
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
 
 local EditScriptViewController = {}
 

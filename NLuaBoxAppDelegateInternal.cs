@@ -1,3 +1,15 @@
+//
+// NLuaBoxAppDelegateInternal.cs : iOS AppDelegate class
+//
+//
+// Authors:
+//	Vinicius Jarina (vinicius.jarina@xamarin.com)
+//
+// Copyright 2013-2014 Xamarin Inc.
+// 
+// Licensed under MIT License
+//
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +28,6 @@ namespace NLuaBox
 	public partial class NLuaBoxAppDelegateInternal : UIApplicationDelegate
 	{
 		// class-level declarations
-		UINavigationController navigationController;
 		UISplitViewController splitViewController;
 		UIWindow window;
 
@@ -50,6 +61,7 @@ namespace NLuaBox
 				res = (bool)initFunction.Call (this).First ();
 
 			} catch (Exception e) {
+
 				Console.WriteLine (e.ToString ());
 				ReportErrorAndRecoverSourceDir (e);
 				return false;
@@ -69,6 +81,13 @@ namespace NLuaBox
 
 		void ReportErrorAndRecoverSourceDir (Exception e)
 		{
+			UIAlertView alert = new UIAlertView ();
+			alert.Title = " Error running NLuaBox ";
+			alert.Message = string.Format (" There was a error running the NLuaBox code ({0}) \n" +
+				"The original will be reverted", e.ToString ());
+			LocalPathPrepare.ResetLocalSourcePath();
+			alert.AddButton ("OK");
+			alert.Show ();
 		}
 	}
 }

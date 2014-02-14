@@ -1,3 +1,13 @@
+--
+-- ScriptsDataSource.lua : UITableViewSource implementation to ScriptListViewController
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
+
 ScriptStore = require ('ScriptStore')
 ScriptViewController = require ('ScriptViewController')
 
@@ -18,8 +28,9 @@ function ScriptsDataSource.new (controller)
 	ScriptsDataSource.m = {}; -- create a table members to store Lua fields
 	ScriptsDataSource.m.scripts = CreateListString();
 	ScriptsDataSource.m.sources = CreateListString();
+
 	if (controller == nil) then
-		error ("ArgumentError: controller cannot be null");
+		error ("ArgumentError: controller cannot be nil");
 	end
 		
 	ScriptsDataSource.m.controller = controller;
@@ -42,6 +53,9 @@ end
 
 
 function ScriptsDataSource:IsSourceCodeNumber(number)
+
+	Console.WriteLine ("ScriptsDataSource: IsSourceCodeNumber {0}", number);
+	
 	return number == 1;
 end
 
@@ -59,21 +73,24 @@ function ScriptsDataSource:NumberOfSections (tableView)
 end
 
 function ScriptsDataSource:TitleForHeader (tableView, section)
-	Console.WriteLine ("TitleForHeader {0}", section == nil);
+
 	if (self:IsSourceCodeNumber (section))then
 		return "NLuaBox Source";
 	end
+
 	return "Lua Scripts";
 end
 
 
 function ScriptsDataSource:RowsInSection ( tableview, section)
 
-		Console.WriteLine ("ScriptsDataSource: RowsInSection");
+		Console.WriteLine ("ScriptsDataSource: RowsInSection {0}", section);
 
 		if (self:IsSourceCodeNumber (section))then
 			return self.m.sources.Count;
 		end
+		Console.WriteLine ("RowsInSection: Count {0}", self.m.scripts.Count);
+
 		return self.m.scripts.Count;
 end
 
@@ -108,7 +125,7 @@ function ScriptsDataSource:CommitEditingStyle (tableView,  editingStyle,  indexP
 		-- Delete the row from the data source.
 		local controller = self.m.controller;
 		if (controller.m.ScriptViewController ~= nil and self.m.scripts[indexPath.Row] == controller.m.ScriptViewController.ScriptName) then
-			controller.m.ScriptViewController:LoadScript (null, false);
+			controller.m.ScriptViewController:LoadScript (nil, false);
 		end
 		self:RemoveFile (indexPath.Row);
 		controller.TableView:DeleteRows (luanet.make_array(NSIndexPath, { indexPath }), UITableViewRowAnimation.Fade);
@@ -118,17 +135,20 @@ function ScriptsDataSource:CommitEditingStyle (tableView,  editingStyle,  indexP
 end
 
 function ScriptsDataSource:RowSelected (tableView, indexPath)
-		
+	
+	Console.WriteLine ("indexPath: {0} {1} {2} {3}", indexPath:ToString(), indexPath.Row, indexPath.Section, indexPath.Item);
+
 	local name = nil;
 	local isSource = self:IsSourceCode (indexPath);
 	local controller = self.m.controller;
-	Console.WriteLine ("RowSelected");
 
-	if (isSource)then
+	if (isSource) then
 		name = self.m.sources[indexPath.Row];
 	else
 		name = self.m.scripts[indexPath.Row];
 	end
+	
+	Console.WriteLine ("RowSelected: Selected {0} {1}", indexPath.Row, name);
 
 	if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) then
 		if (controller.m.ScriptViewController == nil) then
@@ -150,20 +170,23 @@ end
 
 function ScriptsDataSource:Reload ()
 	
-	Console.WriteLine ("Store is null (3): {0} ", self.m.store == nil);
 	local store = self:GetScriptsStore ();
 	local scripts = store:GetScripts();
 	local sources = store:GetSources();
+	local each = luanet.each;
 
-	for script in luanet.each(scripts) do
+	self.m.scripts:Clear();
+	self.m.sources:Clear();
+
+	for script in each(scripts) do
 		local name = Path.GetFileName (script);
 		self.m.scripts:Add (name);
 	end
 
 	self.m.scripts:Sort();
 
-	for script in luanet.each(sources) do
-		local name = Path.GetFileName (script);
+	for source in each(sources) do
+		local name = Path.GetFileName (source);
 		self.m.sources:Add (name);
 	end
 
@@ -179,6 +202,7 @@ function ScriptsDataSource:IsValidName (file)
 end
 
 function ScriptsDataSource:RenameFile (indexPath, newName)
+
 	local removeIndex = -1;
 
 	if (self:Exists (newName)) then
@@ -187,6 +211,7 @@ function ScriptsDataSource:RenameFile (indexPath, newName)
 
 	local row = indexPath.Row;
 	local oldName = self.m.scripts [row];
+
 	self.m.scripts [row] = newName;
 	self.m.store:RenameFile (oldName, newName);
 
@@ -194,14 +219,16 @@ function ScriptsDataSource:RenameFile (indexPath, newName)
 		self.m.scripts:RemoveAt (removeIndex);
 	end
 
-	if (self.m.controller.m.ScriptViewController ~= null) then
+	if (self.m.controller.m.ScriptViewController ~= nil) then
 		self.m.controller.m.ScriptViewController:LoadScript (newName, false);
 	end
 end
 
 function ScriptsDataSource:AddFile (file)
-		
+	Console.WriteLine (" Inside ScriptsDataSource:AddFile {0}" , file);
+	
 	if (not self:Exists (file)) then
+		Console.WriteLine ("Adding {0}", file);
 		self.m.scripts:Add (file);
 	end
 

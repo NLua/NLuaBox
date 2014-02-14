@@ -1,4 +1,14 @@
-﻿
+﻿--
+-- ScriptViewController.lua : Detail View controller of NLuaBox, displays the Lua source code content
+-- using Chromatism component  . 
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
+
 local ScriptViewController = {}
 
 OutputViewController = require ('OutputViewController');

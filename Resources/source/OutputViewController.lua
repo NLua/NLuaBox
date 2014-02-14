@@ -1,4 +1,14 @@
-﻿local OutputViewController = {}
+﻿--
+-- OutputViewController.lua : View Controller to eval the Script and display the output inside a TextView.
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
+
+local OutputViewController = {}
 
 import ('System','System.Text')
 

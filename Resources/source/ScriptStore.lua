@@ -1,3 +1,15 @@
+--
+-- ScriptStore.lua : ScriptStore module, handle the Store of Scripts (save, delete, list)
+--		     using the filesystem (System.IO)
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+--
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
+
 import ('System', 'System.IO')
 
 local ScriptStore = {}
@@ -50,7 +62,9 @@ function ScriptStore:SaveScriptContent (name, content)
 end
 
 function ScriptStore:Exists (name)
+			
 			local filePath = Path.Combine (self.m.path, name);
+			Console.WriteLine (" Inside ScriptStore:Exists {0}", filePath);
 			return File.Exists (filePath);
 end
 

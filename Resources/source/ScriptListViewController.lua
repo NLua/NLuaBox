@@ -1,5 +1,13 @@
-﻿-- ScriptListViewController . 
+﻿--
+-- ScriptListViewController.lua : Main View Controller of NLuaBox implemented using Lua + Xamarin.iOS . 
 -- UITableViewControler implemented using NLua + Xamarin.iOS.
+--
+-- Authors:
+--	Vinicius Jarina (vinicius.jarina@xamarin.com)
+-- Copyright 2013-2014 Xamarin Inc.
+-- 
+-- Licensed under MIT License
+--
 
 local ScriptListViewController = {}
 
@@ -18,7 +26,6 @@ setmetatable (ScriptListViewController,ScriptListViewController.mt)
 function ScriptListViewController.new (...)
 
 		ScriptListViewController.m = {}; -- create a table members to store Lua fields
-		Console.WriteLine ("Construindo ScriptsDataSource");
 		ScriptListViewController.m.dataSource = nil;
 		ScriptListViewController.m.ScriptViewController = nil;
 
@@ -33,7 +40,6 @@ function ScriptListViewController.new (...)
 			ScriptListViewController.PreferredContentSize = SizeF (320, 600);
 			ScriptListViewController.ClearsSelectionOnViewWillAppear = false;
 		end
-		Console.WriteLine ('ScriptListViewController.m.store is null {0} ', ScriptListViewController.m.dataSource.m.store == nil);
 		return ScriptListViewController;
 end
 
@@ -42,25 +48,37 @@ function ScriptListViewController:GetScriptsStore ()
 end
 
 function FixupName (file)
-	if (file:ends(".lua")) then
+	if (file:EndsWith(".lua")) then
 		return file;
 	end
 	return file .. ".lua";
 end
-
+function using (disposable, block)
+	block (disposable);
+	disposable:Dispose();
+end
 function ScriptListViewController:AddNewFile (file, onSuccess)
 
 	file = FixupName (file);
+	Console.WriteLine (" Inside AddNewFile {0}" , file);
 
 	local actionAddFile = function ()
-
+		Console.WriteLine (" Inside actionAddFile {0}" , file);
+		
 		local exists = self.m.dataSource:Exists (file);
 		self.m.dataSource:AddFile (file);
 
 		if (exists == false) then
-			local indexPath = NSIndexPath.FromRowSection (self.TableView:NumberOfRowsInSection (0), 0);
-			self.TableView:InsertRows (luanet.make_array(NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
-			indexPath:Dispose();
+			Console.WriteLine (" Calling using" );
+			--self.TableView:BeginUpdates ();
+			--using(NSIndexPath.FromRowSection (self.TableView:NumberOfRowsInSection (0), 0),
+			--function (indexPath)
+			--	self.TableView:InsertRows (luanet.make_array(NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
+			--end
+		--	)
+		--	self.TableView:EndUpdates ();
+			self.m.dataSource:Reload ();
+			self.TableView:ReloadData ();
 		end
 		onSuccess ();
 	end;
@@ -109,11 +127,9 @@ function ScriptListViewController:RenameFile (indexPath, newName, onSuccess)
 				local exists = self.m.dataSource:Exists (newName);
 
 				self.m.dataSource:RenameFile (indexPath, newName);
-				if (exists == false) then
-					self.TableView:ReloadRows (luanet.make_array (NSIndexPath,{ indexPath }), UITableViewRowAnimation.Automatic);
-				else
-					self.TableView:ReloadData ();
-				end
+
+				self.m.dataSource:Reload ();
+				self.TableView:ReloadData ();
 				onSuccess ();
 			end;
 
@@ -146,6 +162,7 @@ end
 function ScriptListViewController:AddNewItem ()
 
 			local editFile = EditScriptViewController.new (function (name, action) 
+				Console.WriteLine (" Calling AddNewFile" );
 				self:AddNewFile (name, action);
 			end);
 			local nav = UINavigationController (editFile);
@@ -163,7 +180,6 @@ function ScriptListViewController:ViewDidLoad ()
 
 			local addButton = UIBarButtonItem (UIBarButtonSystemItem.Compose, function () self:AddNewItem() end);
 			self.NavigationItem.RightBarButtonItem = addButton;
-			Console.WriteLine ("ViewDidLoad: store is null: {0}", self.m.dataSource:GetScriptsStore () == nil);
 			self.m.dataSource:Reload ();
 end
 
