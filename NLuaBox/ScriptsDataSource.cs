@@ -59,7 +59,7 @@ namespace NLuaBox
 
         public void Reload()
         {
-            string [] scriptsFiles = Store.Scripts;
+            string[] scriptsFiles = Store.Scripts;
 
             scripts.Clear();
 
@@ -125,7 +125,7 @@ namespace NLuaBox
                 return;
             }
 
-            string existingFile = scripts.Where(s => s.Equals(newName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            string existingFile = scripts.FirstOrDefault(s => s.Equals(newName, StringComparison.OrdinalIgnoreCase));
             existingFile = existingFile ?? newName;
 
             if (oldName.Equals(newName, StringComparison.OrdinalIgnoreCase) || !Exists(newName))

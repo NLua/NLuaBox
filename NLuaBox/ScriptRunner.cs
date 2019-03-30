@@ -3,31 +3,30 @@ using NLua;
 
 namespace NLuaBox
 {
-    public delegate void OutputDelegate(string s, params object[] args);
+    public delegate void PrintDelegate(string s, params object[] args);
 
     public class ScriptRunner
     {
-        OutputDelegate printFunction;
         Lua state;
         public ScriptStore Store { get; set; }
         public Action<string> ErrorFunc { get; set; }
-        public OutputDelegate OutputFunc
+        public PrintDelegate PrintFunc
         {
-            get => printFunction;
-            set
-            {
-                printFunction = value;
-                if (printFunction == null)
-                    return;
-                state["print"] = printFunction;
-                state.DoString("io.write = print");
-            }
+            get => (PrintDelegate)state["print"];
+            set => state["print"] = value;
+        }
+
+        public Action<string> WriteFunc
+        {
+            get => (Action<string>)state["io.write"];
+            set => state["io.write"] = value;
         }
 
         public ScriptRunner(ScriptStore store)
         {
             Store = store;
             state = new Lua();
+            state.State.Encoding = System.Text.Encoding.UTF8;
         }
 
         public void DoFile (string name)

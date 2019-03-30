@@ -18,13 +18,12 @@ namespace NLuaBox
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-
             Window.TintColor = UIColor.FromRGB(155, 64, 72);
             // Override point for customization after application launch.
-            //var splitViewController = (UISplitViewController)Window.RootViewController;
-            //var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
-            //navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
-            //splitViewController.WeakDelegate = this;
+            var splitViewController = (UISplitViewController)Window.RootViewController;
+            var navigationController = (UINavigationController)splitViewController.ViewControllers[1];
+            navigationController.TopViewController.NavigationItem.LeftBarButtonItem = splitViewController.DisplayModeButtonItem;
+            splitViewController.WeakDelegate = this;
             return true;
         }
 

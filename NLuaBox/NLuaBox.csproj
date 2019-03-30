@@ -84,16 +84,16 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="KeraLua">
-      <HintPath>..\packages\KeraLua.1.0.4\lib\xamarinios\KeraLua.dll</HintPath>
+      <HintPath>..\packages\KeraLua.1.0.5\lib\xamarinios\KeraLua.dll</HintPath>
     </Reference>
     <Reference Include="NLua">
-      <HintPath>..\packages\NLua.1.4.9\lib\xamarinios\NLua.dll</HintPath>
+      <HintPath>..\packages\NLua.1.4.12\lib\xamarinios\NLua.dll</HintPath>
     </Reference>
     <Reference Include="CYRTextView">
       <HintPath>..\packages\Codefoco.CYRTextView.0.4.3\lib\xamarinios\CYRTextView.dll</HintPath>
     </Reference>
     <Reference Include="LuaCodeView">
-      <HintPath>..\packages\Codefoco.LuaCodeView.iOS.0.1.4\lib\xamarinios\LuaCodeView.dll</HintPath>
+      <HintPath>..\packages\Codefoco.LuaCodeView.iOS.0.1.5\lib\xamarinios\LuaCodeView.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -139,10 +139,6 @@
       <DependentUpon>EditScriptViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptRunner.cs" />
-    <Compile Include="AnotherViewController.cs" />
-    <Compile Include="AnotherViewController.designer.cs">
-      <DependentUpon>AnotherViewController.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\scripts\bisect.lua" />

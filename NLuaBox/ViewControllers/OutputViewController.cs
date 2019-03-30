@@ -31,7 +31,8 @@ namespace NLuaBox
             base.ViewDidLoad();
 
             runner.ErrorFunc = Error;
-            runner.OutputFunc = Print;
+            runner.PrintFunc = Print;
+            runner.WriteFunc = OutputStringRaw;
 
             evalTimer = NSTimer.CreateScheduledTimer(0.1, EvalScriptTimer);
             NavigationItem.RightBarButtonItem = new UIBarButtonItem(UIBarButtonSystemItem.Done, OnDone);
@@ -41,7 +42,6 @@ namespace NLuaBox
         {
             DismissViewController(true, null);
         }
-
 
         void EvalScriptTimer(NSTimer obj)
         {
@@ -57,24 +57,30 @@ namespace NLuaBox
         void Print(object output, params object [] extra)
         {
             outputView.TextColor = UIColor.DarkTextColor;
-            OutputStringRaw(output.ToString(), extra);
+            OutputString(output.ToString(), extra);
         }
 
-        void OutputStringRaw(string output, params object [] extra)
+        void OutputStringRaw(string output)
+        {
+            var builder = new StringBuilder();
+            builder.Append(outputView.Text);
+            builder.Append(output);
+            outputView.Text = builder.ToString();
+        }
+
+
+        void OutputString(string output, params object [] extra)
         {
             var builder = new StringBuilder();
             builder.Append(outputView.Text);
             builder.Append(output);
             for (int i = 0; i < extra.Length; i++)
             {
-                builder.Append(' ');
+                builder.Append('\t');
                 builder.Append(extra[i]);
             }
             builder.Append('\n');
-
             outputView.Text = builder.ToString();
         }
-
-
     }
 }
