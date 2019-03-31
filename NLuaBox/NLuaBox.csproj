@@ -89,16 +89,16 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="KeraLua">
-      <HintPath>..\packages\KeraLua.1.0.5\lib\xamarinios\KeraLua.dll</HintPath>
+      <HintPath>..\packages\KeraLua.1.0.6\lib\xamarinios\KeraLua.dll</HintPath>
     </Reference>
     <Reference Include="NLua">
-      <HintPath>..\packages\NLua.1.4.13\lib\xamarinios\NLua.dll</HintPath>
+      <HintPath>..\packages\NLua.1.4.14\lib\xamarinios\NLua.dll</HintPath>
     </Reference>
     <Reference Include="CYRTextView">
-      <HintPath>..\packages\Codefoco.CYRTextView.0.4.3\lib\xamarinios\CYRTextView.dll</HintPath>
+      <HintPath>..\packages\Codefoco.CYRTextView.0.4.4\lib\xamarinios\CYRTextView.dll</HintPath>
     </Reference>
     <Reference Include="LuaCodeView">
-      <HintPath>..\packages\Codefoco.LuaCodeView.iOS.0.1.5\lib\xamarinios\LuaCodeView.dll</HintPath>
+      <HintPath>..\packages\Codefoco.LuaCodeView.iOS.0.1.6\lib\xamarinios\LuaCodeView.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
