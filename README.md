@@ -1,10 +1,13 @@
 NLuaBox
 =======
 
-[![Logo](https://raw.github.com/codefoco/NLuaBox/master/Resources/Icons/AppIcon40x40@2x.png)]()
+[![Logo](https://raw.githubusercontent.com/NLua/NLuaBox/master/NLuaBox/Assets.xcassets/AppIcon.appiconset/AppIcon60x60%402x.png)]()
 
-NLua iOS Application
+Minimalistic Lua player
+
+[![Screen](https://raw.githubusercontent.com/NLua/NLuaBox/master/Screen.png)]()
+
+[![AppStoreLink](https://raw.githubusercontent.com/NLua/NLuaBox/master/AppStore.png)](https://itunes.apple.com/us/app/nlua-box/id1458245348?ls=1&mt=8)
 
 
-NLuaBox is a application to play with Lua
 
