@@ -56,8 +56,18 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZO";
         string FixiOSBUG(string content)
         {
             content = content.Replace("\x2014", "--");
+            content = content.Replace("\x2013", "--");
+            content = content.Replace("\x2011", "--");
+
             content = content.Replace("\x201C", "\"");
             content = content.Replace("\x201D", "\"");
+            content = content.Replace("\x201E", "\"");
+            content = content.Replace("\x2033", "\"");
+
+            content = content.Replace("\x2018", "'");
+            content = content.Replace("\x2019", "'");
+            content = content.Replace("\x201A", "'");
+            content = content.Replace("\x2032", "'");
             return content;
         }
         void ConfigureView()
@@ -141,7 +151,7 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZO";
             if (codeView == null || string.IsNullOrEmpty(ScriptName))
                 return;
 
-            string content = codeView.Text;
+            string content = FixiOSBUG(codeView.Text);
 
             Store.WriteContent(ScriptName, content);
         }
