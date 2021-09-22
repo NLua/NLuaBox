@@ -1,37 +1,13 @@
-## Welcome to GitHub Pages
+NLuaBox
+=======
 
-You can use the [editor on GitHub](https://github.com/NLua/NLuaBox/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[![Logo](https://raw.githubusercontent.com/NLua/NLuaBox/master/NLuaBox/Assets.xcassets/AppIcon.appiconset/AppIcon60x60%402x.png)]()
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Minimalistic Lua player
 
-### Markdown
+[![Screen](https://raw.githubusercontent.com/NLua/NLuaBox/master/Screen.png)]()
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[![AppStoreLink](https://raw.githubusercontent.com/NLua/NLuaBox/master/AppStore.png)](https://itunes.apple.com/us/app/nlua-box/id1458245348?ls=1&mt=8)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/NLua/NLuaBox/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
